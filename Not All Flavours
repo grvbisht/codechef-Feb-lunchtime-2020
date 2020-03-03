@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	int t,n,k,ans;
+	vector<int>v;
+	cin>>t;
+	int left=0,right;
+	map<int,int>mp;
+	while(t--)
+	{
+		cin>>n>>k;
+		ans=1;
+		v.resize(n);
+		for(int i=0;i<n;i++)
+		cin>>v[i];
+	  left=0,right=0;
+	  while(right<n)
+	  {
+	  	  if(right<n){
+		  mp[v[right]]++;
+	  	  right++;}
+	  	  if((int)mp.size()==k)
+	  	  {
+	  	  	mp[v[left]]--;
+	  	  	if(mp[v[left]]==0)
+	  	  	mp.erase(v[left]);
+	  	  	left++;
+		  }
+		//  cout<<left<<" "<<right<<" "<<ans<<endl;
+	  	  ans=max(ans,right-left);
+		}   
+	cout<<ans<<endl;
+	v.clear();
+	mp.clear();
+	}
+	return 0;
+	
+}
